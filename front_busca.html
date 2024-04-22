@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados da Busca</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://raw.githubusercontent.com/EmersonTNunes/Artisian-Sicoob/main/padroes-09.png');
+            background-size: cover;
+            background-repeat: repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        .navbar {
+            background-color: #003641;
+            padding: 10px 0;
+        }
+
+        .app-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .app-header h1 {
+            color: white;
+            margin: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 50px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #00AE9D;
+        }
+        .container {
+            max-width: 1000px;
+            height: auto;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #003641;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            gap: 50px;
+            color: white;
+            text-align: center;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .send-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #00AE9D;
+            color: white;
+            border: 1px solid #579BB0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .send-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Seleciona o corpo da tabela
+            var tbody = document.querySelector("tbody");
+
+            // Loop para adicionar 30 linhas à tabela
+            for (var dia = 1; dia <= 30; dia++) {
+
+                // Cria a data no formato "YYYY-MM-DD"
+                var data = "2024-04-" + (dia < 10 ? '0' : '') + dia;
+
+                // Cria uma nova linha
+                var row = document.createElement("tr");
+
+                // Adiciona células à linha com dados de exemplo
+                row.innerHTML = `
+                    <td>01/04/2024</td>
+                    <td>Compra de Produto</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>Fulano</td>
+                `;
+
+                // Adiciona a linha ao corpo da tabela
+                tbody.appendChild(row);
+            }
+        });
+    </script>
+
+<nav class="navbar">
+        <div class="app-header">
+            <h1>Artisian</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Pesquisa de Curadoria</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Intenção/Action</th>
+                    <th>Total Watson</th>
+                    <th>Total Avaliado</th>
+                    <th>Incorretas</th>
+                    <th>Curador</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aqui você pode adicionar dinamicamente linhas com os resultados da pesquisa -->
+                <!-- Por exemplo:
+                <tr>
+                    <td>01/04/2024</td>
+                    <td>Compra de Produto</td>
+                    <td>50</td>
+                    <td>45</td>
+                    <td>5</td>
+                    <td>Fulano</td>
+                </tr>
+                -->
+            </tbody>
+        </table>
+        <div class="button-container">
+            <button class="send-button">Enviar</button>
+        </div>
+    </div>
+</body>
+</html>
