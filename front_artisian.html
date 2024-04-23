@@ -1,21 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artisian</title>
-    <!-- PyScript CSS -->
-    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
-    <!-- CSS for examples -->
-    <link rel="stylesheet" href="./assets/css/examples.css" />
-    <!-- This script tag bootstraps PyScript -->
-    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
-    <style>
+    <title>Resultados da Busca</title>
+<style>
         body {
             font-family: Arial, sans-serif;
             background-image: url('https://raw.githubusercontent.com/EmersonTNunes/Artisian-Sicoob/main/padroes-09.png');
             background-size: cover;
-            background-repeat: no-repeat;
+            background-repeat: repeat;
             background-position: center;
             margin: 0;
             padding: 0;
@@ -38,49 +32,36 @@
             margin: 0;
         }
 
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 50px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #00AE9D;
+        }
         .container {
-            display: flex;
-            flex-direction: column;
-            max-width: 700px;
-            height: 20vw;
+            max-width: 1000px;
+            height: auto;
             margin: 50px auto;
             padding: 20px;
             background-color: #003641;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             gap: 50px;
-        }
-        .form-container {
-            display:grid;
-            gap: 30px;
-            grid-template-columns: auto auto;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            flex: 1;
-            margin-right: 10px;
-            font-weight: bold;
             color: white;
+            text-align: center;
         }
-
-        .form-group input[type="text"],
-        .form-group input[type="date"] {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 94%;
-            color: white;
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
         }
-
-        .py-button {
+        .send-button {
             display: block;
             width: 100%;
             padding: 10px;
@@ -90,43 +71,80 @@
             border-radius: 5px;
             cursor: pointer;
         }
-
-        .py-button:hover {
-            background-color: #ddd;
+        .send-button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
+
 <body>
-    <nav class="navbar">
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Seleciona o corpo da tabela
+            var tbody = document.querySelector("tbody");
+
+            // Loop para adicionar 30 linhas à tabela
+            for (var dia = 1; dia <= 30; dia++) {
+
+                // Cria a data no formato "YYYY-MM-DD"
+                var data = "2024-04-" + (dia < 10 ? '0' : '') + dia;
+
+                // Cria uma nova linha
+                var row = document.createElement("tr");
+
+                // Adiciona células à linha com dados de exemplo
+                row.innerHTML = `
+                    <td>01/04/2024</td>
+                    <td>#Compra_Produto</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>Fulano</td>
+                `;
+
+                // Adiciona a linha ao corpo da tabela
+                tbody.appendChild(row);
+            }
+        });
+    </script>
+
+<nav class="navbar">
         <div class="app-header">
             <h1>Artisian</h1>
         </div>
     </nav>
 
     <div class="container">
-        <form py-action="submitSearch" class="form-container">
-            <div class="form-group">
-                <label for="curador">Curador:</label>
-                <input type="text" id="curador" name="curador" required>
-            </div>
-            <div class="form-group">
-                <label for="intencao">Intenção/Action:</label>
-                <input type="text" id="intencao" name="intencao" required>
-            </div>
-            <div class="form-group">
-                <label for="data">Data:</label>
-                <input type="date" id="data" name="data" required>
-            </div>
-            <div class="form-group">
-                <label for="assistant">Assistant:</label>
-                <input type="text" id="assistant" name="assistant" required>
-            </div>
-        </form>
-        <button type="submit" class="py-button">Buscar</button>
+        <h2>Pesquisa de Curadoria</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Intenção/Action</th>
+                    <th>Total Watson</th>
+                    <th>Total Avaliado</th>
+                    <th>Incorretas</th>
+                    <th>Curador</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aqui você pode adicionar dinamicamente linhas com os resultados da pesquisa -->
+                <!-- Por exemplo:
+                <tr>
+                    <td>01/04/2024</td>
+                    <td>Compra de Produto</td>
+                    <td>50</td>
+                    <td>45</td>
+                    <td>5</td>
+                    <td>Fulano</td>
+                </tr>
+                -->
+            </tbody>
+        </table>
+        <div class="button-container">
+            <button class="send-button">Enviar</button>
+        </div>
     </div>
-
-    <section class="pyscript">
-        <script type="py" src="./main.py" config="./pyscript.toml"></script>
-    </section>
 </body>
 </html>
