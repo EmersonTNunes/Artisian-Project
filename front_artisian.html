@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artisian</title>
-    <!-- PyScript CSS -->
-    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    
     <!-- CSS for examples -->
     <link rel="stylesheet" href="./assets/css/examples.css" />
     <!-- This script tag bootstraps PyScript -->
-    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <script type="module" src="main.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -104,7 +103,7 @@
     </nav>
 
     <div class="container">
-        <form py-action="submitSearch" class="form-container">
+        <form py-action="submitSearch" class="form-container" onSubmit="JavaScript:handleClick()">
             <div class="form-group">
                 <label for="curador">Curador:</label>
                 <input type="text" id="curador" name="curador" required>
@@ -121,12 +120,13 @@
                 <label for="assistant">Assistant:</label>
                 <input type="text" id="assistant" name="assistant" required>
             </div>
+            <button type="submit" class="py-button">Buscar</button>
         </form>
-        <button type="submit" class="py-button">Buscar</button>
+        
     </div>
 
-    <section class="pyscript">
-        <script type="py" src="./main.py" config="./pyscript.toml"></script>
+    <section class="javascript">
+        <script type="js" src="./main.js" config="./pyscript.toml"></script>
     </section>
 </body>
 </html>

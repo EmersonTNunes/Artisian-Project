@@ -1,5 +1,6 @@
 import openpyxl
 import pandas
+import csv
 
 def overview_data():
 	print("Insira a data")
@@ -39,22 +40,15 @@ def overview_data():
 
 	return list_data
 
-def write_on_excel_file(file_name, data):
+def write_on_csv_file(file_name, data):
 	# Recebe o nome do arquivo e uma lista de dados
 	
-	# Abre o arquivo
-	workbook = openpyxl.load_workbook(file_name)
-
-	# adiciona dados na tabela
-	sheet = workbook.active
-
-	# Adiciona os dados na planilha
-	sheet.append(data)
-
-	# Salva o arquivo
-	workbook.save(file_name)
+	# Abre o arquivo em modo de escrita
+	with open(file_name, 'a', newline='') as csvfile:
+		writer = csv.writer(csvfile)
+		
+		# Escreve os dados no arquivo CSV
+		writer.writerow(data)
 
 data = overview_data()
-write_on_excel_file('overview.xlsx', data)
-
-
+write_on_csv_file('overview.xlsx', data)
