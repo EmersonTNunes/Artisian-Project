@@ -1,0 +1,135 @@
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello_world():
+    return """<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisian</title>
+    
+    <!-- CSS for examples -->
+    <link rel="stylesheet" href="./assets/css/examples.css" />
+    <!-- This script tag bootstraps PyScript -->
+    <script type="module" src="main.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://raw.githubusercontent.com/EmersonTNunes/Artisian-Sicoob/main/padroes-09.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        .navbar {
+            background-color: #003641;
+            padding: 10px 0;
+        }
+
+        .app-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .app-header h1 {
+            color: white;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            max-width: 700px;
+            height: 20vw;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #003641;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            gap: 50px;
+        }
+        .form-container {
+            display:grid;
+            gap: 30px;
+            grid-template-columns: auto auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            flex: 1;
+            margin-right: 10px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="date"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 94%;
+            color: black;
+        }
+
+        .py-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #00AE9D;
+            color: white;
+            border: 1px solid #579BB0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .py-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="app-header">
+            <h1>Artisian</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+        <form py-action="submitSearch" class="form-container" onSubmit="JavaScript:handleClick()">
+            <div class="form-group">
+                <label for="curador">Curador:</label>
+                <input type="text" id="curador" name="curador" required>
+            </div>
+            <div class="form-group">
+                <label for="intencao">Intenção/Action:</label>
+                <input type="text" id="intencao" name="intencao" required>
+            </div>
+            <div class="form-group">
+                <label for="data">Data:</label>
+                <input type="date" id="data" name="data" required>
+            </div>
+            <div class="form-group">
+                <label for="assistant">Assistant:</label>
+                <input type="text" id="assistant" name="assistant" required>
+            </div>
+            <button type="submit" class="py-button">Buscar</button>
+        </form>
+        
+    </div>
+
+    <section class="javascript">
+        <script type="js" src="./main.js" config="./pyscript.toml"></script>
+    </section>
+</body>"""
