@@ -4,7 +4,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def front_artisian():
-    return render_template("front_artisian.html")
+    valores_campos = {
+        'curador': '',
+        'intencao': '',
+        'data': '',
+        'assistant': '',
+    }
+    return render_template("front_artisian.html", valores_campos=valores_campos)
 
 @app.route("/busca")
 def front_busca():
